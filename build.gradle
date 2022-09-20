@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'idea'
+}
+
+group 'co.com.sofka'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    serenityVersion = '3.2.1'
+}
+
+dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    // https://mvnrepository.com/artifact/com.sikulix/sikulixapi
+    implementation 'com.sikulix:sikulixapi:2.0.5'
+    // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
+    implementation 'io.github.bonigarcia:webdrivermanager:5.2.3'
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
+    implementation 'io.cucumber:cucumber-java:7.6.0'
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit
+    implementation 'io.cucumber:cucumber-junit:7.6.0'
+
+    // https://mvnrepository.com/artifact/net.serenity-bdd/serenity-cucumber
+    //testImplementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: serenityVersion
+
+    implementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: serenityVersion
+}
+
+test {
+    useJUnitPlatform()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+gradle.startParameter.continueOnFailure = true
